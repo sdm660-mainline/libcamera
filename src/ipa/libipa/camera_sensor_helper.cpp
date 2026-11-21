@@ -666,6 +666,21 @@ public:
 };
 REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperImx355, "imx355")
 
+class CameraSensorHelperImx376 : public CameraSensorHelper
+{
+public:
+	CameraSensorHelperImx376()
+	{
+		/*
+		 * From Linux kernel driver: IMX376_EXPOSURE_OFFSET is 10.
+		 * gain = 1024/(1024 - code); code = [0, 960]; max gain = x16.
+		 */
+		gain_ = AnalogueGainLinear{ 0, 1024, -1, 1024 };
+		exposureMargin_ = 10;
+	}
+};
+REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperImx376, "imx376")
+
 class CameraSensorHelperImx415 : public CameraSensorHelper
 {
 public:
@@ -701,6 +716,21 @@ public:
 	}
 };
 REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperImx477, "imx477")
+
+class CameraSensorHelperImx486 : public CameraSensorHelper
+{
+public:
+	CameraSensorHelperImx486()
+	{
+		/*
+		 * From Linux kernel driver: IMX486_EXPOSURE_OFFSET is 10.
+		 * gain = 512/(512 - code); code = [0, 480]; max gain = x16.
+		 */
+		gain_ = AnalogueGainLinear{ 0, 512, -1, 512 };
+		exposureMargin_ = 10;
+	}
+};
+REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperImx486, "imx486")
 
 /*
  * Reusing CameraSensorHelperImx585 for multiple sensors, for convenience.
@@ -761,6 +791,23 @@ public:
 	}
 };
 REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperOv01a10, "ov01a10")
+
+class CameraSensorHelperOv02a10 : public CameraSensorHelper
+{
+public:
+	CameraSensorHelperOv02a10()
+	{
+		/*
+		 * From Linux kernel driver: OV02A10_EXPOSURE_MAX_MARGIN is 4.
+		 * gain = code/16 (OV02A10_GAIN_MIN 0x10 is 1x); code = [0x10, 0xf8].
+		 */
+		/* From dark frame measurement: 0x40 at 10bits. */
+		blackLevel_ = 4096;
+		gain_ = AnalogueGainLinear{ 1, 0, 0, 16 };
+		exposureMargin_ = 4;
+	}
+};
+REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperOv02a10, "ov02a10")
 
 class CameraSensorHelperOv08d10 : public CameraSensorHelper
 {
@@ -957,6 +1004,56 @@ public:
 	}
 };
 REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperOv13858, "ov13858")
+
+class CameraSensorHelperS5k2l7 : public CameraSensorHelper
+{
+public:
+	CameraSensorHelperS5k2l7()
+	{
+		/*
+		 * From Linux kernel driver: S5K2L7_EXP_MARGIN is 4.
+		 * gain = code/32 (0x20 is 1x); code = [0x20, 0x200]; max gain = x16.
+		 */
+		/* From dark frame measurement: 0x40 at 10bits. */
+		blackLevel_ = 4096;
+		gain_ = AnalogueGainLinear{ 1, 0, 0, 32 };
+		exposureMargin_ = 4;
+	}
+};
+REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperS5k2l7, "s5k2l7")
+
+class CameraSensorHelperS5k3t1 : public CameraSensorHelper
+{
+public:
+	CameraSensorHelperS5k3t1()
+	{
+		/*
+		 * From Linux kernel driver: S5K3T1_EXPOSURE_MARGIN is 5 (vendor vert_offset: coarse
+		 * integration time <= FLL - 5).
+		 * gain = code/32 (0x20 is 1x); code = [0x20, 0x200]; max gain = x16.
+		 */
+		/* From dark frame measurement: 0x40 at 10bits. */
+		blackLevel_ = 4096;
+		gain_ = AnalogueGainLinear{ 1, 0, 0, 32 };
+		exposureMargin_ = 5;
+	}
+};
+REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperS5k3t1, "s5k3t1")
+
+class CameraSensorHelperS5k5e8 : public CameraSensorHelper
+{
+public:
+	CameraSensorHelperS5k5e8()
+	{
+		/*
+		 * From Linux kernel driver: S5K5E8_EXPOSURE_MARGIN is 4.
+		 * gain = code/32 (0x20 is 1x); code = [0x20, 0x200]; max gain = x16.
+		 */
+		gain_ = AnalogueGainLinear{ 1, 0, 0, 32 };
+		exposureMargin_ = 4;
+	}
+};
+REGISTER_CAMERA_SENSOR_HELPER(CameraSensorHelperS5k5e8, "s5k5e8")
 
 class CameraSensorHelperVd55g1 : public CameraSensorHelper
 {

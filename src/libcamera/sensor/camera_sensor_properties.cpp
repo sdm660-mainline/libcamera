@@ -281,6 +281,17 @@ const CameraSensorProperties *CameraSensorProperties::get(const std::string &sen
 				.hblankDelay = 2
 			},
 		} },
+		{ "imx376", {
+			.unitCellSize = { 1000, 1000 },
+			.testPatternModes = {
+				{ controls::draft::TestPatternModeOff, 0 },
+				{ controls::draft::TestPatternModeSolidColor, 1 },
+				{ controls::draft::TestPatternModeColorBars, 2 },
+				{ controls::draft::TestPatternModeColorBarsFadeToGray, 3 },
+				{ controls::draft::TestPatternModePn9, 4 },
+			},
+			.sensorDelays = { },
+		} },
 		{ "imx415", {
 			.unitCellSize = { 1450, 1450 },
 			.testPatternModes = {},
@@ -321,6 +332,17 @@ const CameraSensorProperties *CameraSensorProperties::get(const std::string &sen
 				.vblankDelay = 3,
 				.hblankDelay = 3
 			},
+		} },
+		{ "imx486", {
+			.unitCellSize = { 1250, 1250 },
+			.testPatternModes = {
+				{ controls::draft::TestPatternModeOff, 0 },
+				{ controls::draft::TestPatternModeSolidColor, 1 },
+				{ controls::draft::TestPatternModeColorBars, 2 },
+				{ controls::draft::TestPatternModeColorBarsFadeToGray, 3 },
+				{ controls::draft::TestPatternModePn9, 4 },
+			},
+			.sensorDelays = { },
 		} },
 		{ "imx519", {
 			.unitCellSize = { 1220, 1220 },
@@ -415,6 +437,14 @@ const CameraSensorProperties *CameraSensorProperties::get(const std::string &sen
 				.vblankDelay = 2,
 				.hblankDelay = 2
 			},
+		} },
+		{ "ov02a10", {
+			.unitCellSize = { 1750, 1750 },
+			.testPatternModes = {
+				{ controls::draft::TestPatternModeOff, 0 },
+				{ controls::draft::TestPatternModeColorBars, 1 },
+			},
+			.sensorDelays = { },
 		} },
 		{ "ov08d10", {
 			.unitCellSize = { 1120, 1120 },
@@ -609,6 +639,27 @@ const CameraSensorProperties *CameraSensorProperties::get(const std::string &sen
 				{ controls::draft::TestPatternModeOff, 0 },
 				{ controls::draft::TestPatternModeColorBars, 1 },
 			},
+			.sensorDelays = { },
+		} },
+		{ "s5k2l7", {
+			.unitCellSize = { 1400, 1400 },
+			.testPatternModes = {},
+			.sensorDelays = { },
+		} },
+		{ "s5k3t1", {
+			.unitCellSize = { 900, 900 },
+			.testPatternModes = {
+				{ controls::draft::TestPatternModeOff, 0 },
+				{ controls::draft::TestPatternModeSolidColor, 1 },
+				{ controls::draft::TestPatternModeColorBars, 2 },
+				{ controls::draft::TestPatternModeColorBarsFadeToGray, 3 },
+				{ controls::draft::TestPatternModePn9, 4 },
+			},
+			.sensorDelays = { },
+		} },
+		{ "s5k5e8", {
+			.unitCellSize = { 1120, 1120 },
+			.testPatternModes = {},
 			.sensorDelays = { },
 		} },
 		{ "vd55g1", {
